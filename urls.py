@@ -16,16 +16,25 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path
+from django.conf.urls import url
+from django.urls import path, include
+
 from mainapp import views
 
 urlpatterns = [
 	path('', views.Main.as_view(), name='Main'),
-	path('services/', views.Services.as_view(), name='Services'),
-	path('ysluga/', views.Ysluga.as_view(), name='Ysluga'),
+    path('contacts/', views.Contacts.as_view(), name='Contacts'),
+    path('about/', views.About.as_view(), name='About'),
+    path('audit/', views.Audit.as_view(), name='Audit'),
+	path('upravlenie-reputaciej/', views.Services.as_view(), name='Services'),
+    path('digital/', views.Digital.as_view(), name='Digital'),
+	path('upravlenie-reputaciej/analiz-infopolya/', views.Ysluga.as_view(), name='Ysluga'),
+    path('upravlenie-reputaciej/analitika/', views.Analitika.as_view(), name='Analitika'),
+    path('upravlenie-reputaciej/podderzhka/', views.Podderzhka.as_view(), name='Podderzhka'),
     path('admin/', admin.site.urls),
     path('blog/', views.BlogListView.as_view(), name='home'),
-    path('item/<int:pk>/', views.BlogDetailView.as_view(), name='Item_detail'),
+
+
 ] 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
